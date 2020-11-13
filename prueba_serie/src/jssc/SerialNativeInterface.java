@@ -147,7 +147,7 @@ public class SerialNativeInterface {
         if(libName.endsWith(".dylib")){//Since 2.1.0 MacOSX 10.8 fix
             libName = libName.replace(".dylib", ".jnilib");
         }
-
+        
         boolean loadLib = false;
 
         if(isLibFolderExist(libFolderPath)){
@@ -168,6 +168,10 @@ public class SerialNativeInterface {
             }
         }
 
+        System.out.println("Bo2aSerial.jSSC libFolderPath: " + libFolderPath);
+        System.out.println("Bo2aSerial.jSSC libName: " + libName);
+        System.out.println("Bo2aSerial.jSSC loadLib: " + loadLib);
+        
         if (loadLib) {
             System.load(libFolderPath + fileSeparator + libName);
             String versionBase = getLibraryBaseVersion();
@@ -175,7 +179,11 @@ public class SerialNativeInterface {
             if (!versionBase.equals(versionNative)) {
                 System.err.println("Warning! jSSC Java and Native versions mismatch (Java: " + versionBase + ", Native: " + versionNative + ")");
             }
+            
+            System.out.println("Bo2aSerial.jSSC versionBase: " + versionBase);
+            System.out.println("Bo2aSerial.jSSC versionNative: " + versionNative);
         }
+
     }
 
     /**

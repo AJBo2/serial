@@ -33,8 +33,12 @@ public class ReadData {
 	        		SerialPort.DATABITS_8, 
 	        		SerialPort.STOPBITS_1, 
 	        		SerialPort.PARITY_NONE);//Set params.
-	        byte[] buffer = serialPort.readBytes(10);//Read 10 bytes from serial port
-	        System.out.println("leido: " + new String(buffer));
+	        
+	        byte[] buffer = null;
+	        do {
+	        	buffer = serialPort.readBytes(10);//Read 10 bytes from serial port
+	        	System.out.println("leido: " + new String(buffer));
+	        } while ( buffer != null );	        
 	        serialPort.closePort();//Close serial port
 	    }
 	    catch (SerialPortException ex) {
